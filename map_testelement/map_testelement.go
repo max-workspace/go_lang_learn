@@ -26,6 +26,17 @@ func main() {
 	if isPresent {
 		fmt.Printf("The value of \"Washington\" in map1 is: %d\n", value)
 	} else {
-		fmt.Printf("map1 does not contain Washington")
+		fmt.Printf("map1 does not contain Washington\n")
+	}
+
+	// 测试map是否按顺序进行输出
+	testMapPrint()
+}
+
+func testMapPrint() {
+	fmt.Println("test map order")
+	capitals := map[string]string{"France": "Paris", "Italy": "Rome", "Japan": "Tokyo"}
+	for key := range capitals {
+		fmt.Println("Map item: Capital of", key, "is", capitals[key])
 	}
 }
