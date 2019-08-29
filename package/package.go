@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/max_workspace/golang_learn/stringutil"
+	"github.com/max_workspace/golang_learn/package/stringutil"
 )
 
 type syncInfo struct {
