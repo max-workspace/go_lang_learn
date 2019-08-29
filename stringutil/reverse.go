@@ -1,6 +1,15 @@
 // stringutil 包含有用于处理字符串的工具函数
 package stringutil
 
+import (
+	"fmt"
+)
+
+// init
+func init() {
+	fmt.Println("init github.com/max_workspace/golang_learn/stringutil init")
+}
+
 // Reverse 将其实参字符串以符文为单位左右反转
 func Reverse(s string) string {
 	r := []rune(s)
