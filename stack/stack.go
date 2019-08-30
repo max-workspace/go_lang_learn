@@ -4,10 +4,10 @@ import (
 	"fmt"
 )
 
-type Element interface{}
+type Elementer interface{}
 
 type stack struct {
-	element []Element
+	element []Elementer
 }
 
 func init() {
@@ -22,11 +22,11 @@ func (this *stack) Size() int {
 	return len(this.element)
 }
 
-func (this *stack) Push(e Element) {
+func (this *stack) Push(e Elementer) {
 	this.element = append(this.element, e)
 }
 
-func (this *stack) Pop() Element {
+func (this *stack) Pop() Elementer {
 	size := this.Size()
 	if size == 0 {
 		fmt.Println("stack is empty!")
@@ -53,6 +53,6 @@ func (this *stack) Clear() bool {
 	for i := 0; i < this.Size(); i++ {
 		this.element[i] = nil
 	}
-	this.element = make([]Element, 0)
+	this.element = make([]Elementer, 0)
 	return true
 }

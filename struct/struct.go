@@ -2,29 +2,29 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/max_workspace/golang_learn/stack"
 	"github.com/max_workspace/golang_learn/struct/people"
 )
 
+// 通过声明接口，实现定义未导入类型的map
+type Peopler interface {
+	Name() string
+	Age() int
+	GenderString() string
+	CreateTime() time.Time
+}
+
 type Base struct{}
-
-func (Base) Magic() {
-	fmt.Println("base magic")
-}
-
-func (self Base) MoreMagic() {
-	self.Magic()
-	self.Magic()
-}
 
 type Voodoo struct {
 	Base
 }
 
-func (Voodoo) Magic() {
-	fmt.Println("voodoo magic")
-}
+var (
+	PeopleList = make(map[string]Peopler)
+)
 
 func main() {
 	// 测试外部导入的struct
@@ -39,15 +39,40 @@ func main() {
 
 func testStructPeople() {
 	fmt.Println("test people struct")
-	max := people.NewPeople("max", 26, 1)
-	fmt.Printf(
-		"type:%T|name:%v|age:%d|gender:%v|createTime:%v|\n",
-		max,
-		max.Name,
-		max.Age(),
-		max.GenderString(),
-		max.CreateTime())
+	createPeople("max", 26, 1)
+	createPeople("sum", 27, 1)
+	fmt.Printf("%v", PeopleList)
+	showPeopleInfo("max")
+	showPeopleInfo("sum")
 	fmt.Println("\n")
+}
+
+func createPeople(name string, age int, gender int) {
+	PeopleList[name] = people.NewPeople(name, age, gender)
+}
+
+func showPeopleInfo(name string) {
+	fmt.Printf(
+		"%v|type:%T|name:%v|age:%d|gender:%v|createTime:%v|\n",
+		name,
+		PeopleList[name],
+		PeopleList[name].Name(),
+		PeopleList[name].Age(),
+		PeopleList[name].GenderString(),
+		PeopleList[name].CreateTime())
+}
+
+func (Base) Magic() {
+	fmt.Println("base magic")
+}
+
+func (self Base) MoreMagic() {
+	self.Magic()
+	self.Magic()
+}
+
+func (Voodoo) Magic() {
+	fmt.Println("voodoo magic")
 }
 
 func testStructVoodoo() {
