@@ -20,4 +20,6 @@ func main() {
 	// 测试通道的阻塞
 	example.TestCounter()
 
+	// 测试惰性生成器
+	example.TestGeneralLazyEvalution()
 }
