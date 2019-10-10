@@ -15,5 +15,8 @@ func main() {
 	// network.SimpleTcpService()
 
 	// 启动simple_web_service
-	network.SimpleWebService()
+	// network.SimpleWebService()
+
+	// 启动多功能网页服务器
+	network.ElaboratedWebserver()
 }
